@@ -92,8 +92,8 @@
                     <div class="card-body">
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <a href="fingervault://auth/?host=&login=" class="btn btn-success">
-                                    {{ __('labels.fingervault.login') }}
+                                <a href="fingervault://auth?host={{ rawurlencode('fingertest.bmrozinski.atthouse.pl) }}" class="btn btn-success">
+                                    <p>{{ __('labels.fingervault.login') }}</p>
                                 </a>
                             </div>
                         </div>
