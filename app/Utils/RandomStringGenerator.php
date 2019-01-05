@@ -24,8 +24,6 @@ class RandomStringGenerator
     /** @var int */
     protected $alphabetLength;
 
-    private static $SPECIAL_CHARACTERS = '!@#$%^&*()_-+=';
-
     /**
      * @param string $alphabet
      */
@@ -38,7 +36,6 @@ class RandomStringGenerator
                 implode(range('a', 'z'))
                 . implode(range('A', 'Z'))
                 . implode(range(0, 9))
-                . '!@#$%^&*()_-+='
             );
         }
     }
@@ -60,7 +57,7 @@ class RandomStringGenerator
      * @param int $length
      * @return string
      */
-    public function generate($length)
+    public function generate($length = 190)
     {
         $token = '';
 

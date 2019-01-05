@@ -30,11 +30,11 @@ class ProfileController extends Controller
         $pairLink = "fingervault://pages/create";
         $pairLink .= "?name=" . rawurlencode(env('APP_NAME'));
         $pairLink .= "&host=" . rawurlencode(env('APP_HOST'));
-        $pairLink .= "&url=" . rawurlencode(env('APP_URL'));
+        $pairLink .= "&url=" . rawurlencode(env('APP_URL') . '/public');
         $pairLink .= "&login=" . rawurlencode($user->email);
         $pairLink .= "&userToken=" . rawurlencode($user->fingervault_user_token);
-        $pairLink .= "&tokenEndpoint=" . rawurlencode('/fingervault/token/{userToken}');
-        $pairLink .= "&loginEndpoint=" . rawurlencode('/fingervault/login/{token}');
+        $pairLink .= "&tokenEndpoint=" . rawurlencode('/api/fingervault/token/{userToken}');
+        $pairLink .= "&loginEndpoint=" . rawurlencode('/fingervault/login/{loginToken}');
 
 
         return view('profile', ['user' => $user, 'pairLink' => $pairLink]);
