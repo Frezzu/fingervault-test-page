@@ -2,10 +2,16 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
+/**
+ * Class User
+ *
+ * @property string fingervault_user_token
+ * @property string email
+ * @package App
+ */
 class User extends Authenticatable
 {
     use Notifiable;

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
 class ProfileController extends Controller
 {
     /**
@@ -21,6 +24,19 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile');
+        /** @var User $user */
+        $user = Auth::user();
+
+        $pairLink = "fingervault://pages/create";
+        $pairLink .= "?name=" . rawurlencode(env('APP_NAME'));
+        $pairLink .= "&host=" . rawurlencode(env('APP_HOST'));
+        $pairLink .= "&url=" . rawurlencode(env('APP_URL'));
+        $pairLink .= "&login=" . rawurlencode($user->email);
+        $pairLink .= "&userToken=" . rawurlencode($user->fingervault_user_token);
+        $pairLink .= "&tokenEndpoint=" . rawurlencode('/fingervault/token/{userToken}');
+        $pairLink .= "&loginEndpoint=" . rawurlencode('/fingervault/login/{token}');
+
+
+        return view('profile', ['user' => $user, 'pairLink' => $pairLink]);
     }
 }

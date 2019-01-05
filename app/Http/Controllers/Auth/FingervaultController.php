@@ -111,4 +111,31 @@ class FingervaultController extends Controller
             'errorMessage' => __('auth.fingervault.user_not_found')
         ]);
     }
+
+    public function generateUserToken()
+    {
+
+        /** @var App\User $user */
+        $user = Auth::user();
+
+        $user->fingervault_user_token = rawurlencode($this->getRandomToken());
+        $user->save();
+
+        return redirect()->back();
+    }
+
+    private function getRandomToken($length = 190)
+    {
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet .= "0123456789";
+        $max = strlen($codeAlphabet); // edited
+
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $codeAlphabet[random_int(0, $max - 1)];
+        }
+
+        return $token;
+    }
 }

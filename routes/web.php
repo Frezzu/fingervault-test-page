@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/fingervault/login/{token}', 'Auth\FingervaultController@checkLogin')->name('fingervault.login');
+Route::get('/fingervault/token/generate', 'Auth\FingervaultController@generateUserToken')->name('fingervault.token.generate');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
