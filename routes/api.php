@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/fingervault/token/{userToken}', 'Auth\FingervaultController@getLoginToken')->name('fingervault.token');
+Route::post('/fingervault/token', 'Auth\FingervaultController@getLoginToken')->name('fingervault.token');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -57,8 +57,10 @@ class FingervaultController extends Controller
         ]);
     }
 
-    public function getLoginToken(Request $request, $userToken)
+    public function getLoginToken(Request $request)
     {
+        $userToken = $request->input('userToken');
+
         /** @var App\User $user */
         $user = App\User::where(FingervaultController::$FINGERVAULT_USER_TOKEN_COLUMN_NAME, $userToken)->first();
 

@@ -33,7 +33,7 @@ class ProfileController extends Controller
         $pairLink .= "&url=" . rawurlencode(env('APP_URL') . '/public');
         $pairLink .= "&login=" . rawurlencode($user->email);
         $pairLink .= "&userToken=" . rawurlencode($user->fingervault_user_token);
-        $pairLink .= "&tokenEndpoint=" . rawurlencode('/api/fingervault/token/{userToken}');
+        $pairLink .= "&tokenEndpoint=" . rawurlencode('/api/fingervault/token');
         $pairLink .= "&loginEndpoint=" . rawurlencode('/fingervault/login/{loginToken}');
 
 
